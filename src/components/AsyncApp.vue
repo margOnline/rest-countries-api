@@ -1,51 +1,35 @@
 <script setup>
-import { ref } from 'vue'
-import { state } from './store/countryStore'
-import { getCountries, allCountriesEndpoint, regions } from '@/utils/helper'
-import CountryItem from './components/CountryItem.vue'
-import FilterSelect from './components/FilterSelect.vue'
-import SearchBar from './components/SearchBar.vue'
+import { state } from '../store/store'
+import { getCountries, allCountriesEndpoint } from '@/services/request-client'
+import { setUpCountryStore } from '@/services/country-service'
+import CountrySummary from '../components/CountrySummary.vue'
+import FilterSelect from '@/components/FilterSelect.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
-getCountries(allCountriesEndpoint).then((data) => (state.value.countries = data))
+getCountries(allCountriesEndpoint).then((data) => setUpCountryStore(data))
 
 const filterCountriesByRegion = async (region) => {
-  const endpoint = regions.find((r) => r === region) ? `region/${region}` : allCountriesEndpoint
+  const endpoint = state.value.regions.find((r) => r === region)
+    ? `region/${region}`
+    : allCountriesEndpoint
   const data = await getCountries(endpoint)
   state.value.countries = data
-}
-const darkMode = ref(false)
-
-const toggleMode = () => {
-  darkMode.value = !darkMode.value
-}
-const lightDarkMode = () => {
-  return darkMode.value ? 'dark' : 'light'
 }
 </script>
 
 <template>
-  <div :class="lightDarkMode()">
-    <header>
-      <div class="title">Where in the world?</div>
-      <div class="mode-switch">
-        <button @click="toggleMode()" class="modeToggler">
-          <font-awesome-icon icon="fa-regular fa-moon" class="icon" />
-          {{ lightDarkMode() }} Mode
-        </button>
-      </div>
-    </header>
+  <div>
     <div class="actions">
       <SearchBar />
       <FilterSelect @filterCountries="filterCountriesByRegion" />
     </div>
     <main>
-      <CountryItem
+      <CountrySummary
         v-for="country in state.countries"
         :key="country.name.common.toLowerCase()"
         :country="country"
       />
     </main>
-    <div></div>
   </div>
 </template>
 

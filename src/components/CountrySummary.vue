@@ -10,7 +10,14 @@ const capitalFormatted = () => {
 
 <template>
   <div class="country-card">
-    <img :src="props.country.flags.svg" :alt="props.country.flags.alt" />
+    <router-link
+      :to="{
+        name: 'countries.show',
+        params: { code: props.country.cca3 },
+      }"
+    >
+      <img :src="props.country.flags.svg" :alt="props.country.flags.alt" />
+    </router-link>
     <div class="country-detail">
       <h2>{{ props.country.name.common }}</h2>
       <p><span>Population: </span>{{ props.country.population }}</p>
@@ -22,6 +29,7 @@ const capitalFormatted = () => {
 
 <style scoped>
 .country-card {
+  font-size: var(--summary-font-size);
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   overflow: hidden;

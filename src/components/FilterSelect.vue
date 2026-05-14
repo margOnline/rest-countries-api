@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import { regions } from '@/utils/helper'
+import { state } from '@/store/store'
 
 const emit = defineEmits(['filterCountries'])
-const regionFilters = ['--All--'].concat(regions)
+const regionFilters = ['--All--'].concat(state.value.regions)
 const isDropdownOpen = ref(false)
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
