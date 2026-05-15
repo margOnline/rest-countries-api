@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { getCountry } from '@/services/request-client'
-import { formatCurrencies, formatLanguages, getBorderCountries } from '@/services/country-service'
+import { formatCurrencies, formatLanguages } from '@/services/country-service'
+import { state } from '@/store/store'
 import GoBack from './GoBack.vue'
 
 const props = defineProps({
@@ -34,13 +35,12 @@ getCountry(props.code).then((data) => (country.value = data))
         </div>
         <div class="country-borders">
           <h4>Border Countries:</h4>
-          <div
-            v-for="border in getBorderCountries(country?.borders)"
-            :key="border"
-            class="border-country"
-          >
-            {{ border?.name?.common }}
+          <div v-if="country?.borders">
+            <div v-for="border in country?.borders" :key="border" class="border-country">
+              {{ state.countryCodeToName[border] }}
+            </div>
           </div>
+          <div v-else>None</div>
         </div>
       </div>
     </div>

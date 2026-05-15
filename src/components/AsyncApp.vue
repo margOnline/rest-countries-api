@@ -9,6 +9,7 @@ import SearchBar from '@/components/SearchBar.vue'
 getCountries(allCountriesEndpoint).then((data) => setUpCountryStore(data))
 
 const filterCountriesByRegion = async (region) => {
+  state.value.currentRegion = region
   const endpoint = state.value.regions.find((r) => r === region)
     ? `region/${region}`
     : allCountriesEndpoint
@@ -26,7 +27,7 @@ const filterCountriesByRegion = async (region) => {
     <main>
       <CountrySummary
         v-for="country in state.countries"
-        :key="country.name.common.toLowerCase()"
+        :key="country?.name?.common.toLowerCase()"
         :country="country"
       />
     </main>
