@@ -9,6 +9,11 @@
   --grey-50: hsl(0, 0%, 99%);
   --white: hsl(0, 100%, 100%);
 
+  --accent-light-blue-alt: #abc8d9;
+  --accent-color: var(--accent-light-blue-alt);
+  --brightness-filter: brightness(0.98);
+  --accent-brightness-filter: brightness(0.85);
+
   /* typography */
   --sans-serif: 'Nunito Sans', sans-serif;
   --summary-font-size: 0.875rem;
