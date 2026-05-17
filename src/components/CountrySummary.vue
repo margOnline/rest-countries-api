@@ -1,4 +1,6 @@
 <script setup>
+import { formatNumber } from '@/services/helpers';
+
 const props = defineProps({
   country: Object,
 })
@@ -20,7 +22,7 @@ const capitalFormatted = () => {
     </router-link>
     <div class="country-detail">
       <h2>{{ props.country.name.common }}</h2>
-      <p><span>Population: </span>{{ props.country.population }}</p>
+      <p><span>Population: </span>{{ formatNumber(props.country.population) }}</p>
       <p><span>Region: </span>{{ props.country.region }}</p>
       <p><span>Capital: </span>{{ capitalFormatted() }}</p>
     </div>

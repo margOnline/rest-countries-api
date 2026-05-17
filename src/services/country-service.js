@@ -1,4 +1,5 @@
 import { state } from '@/store/store'
+import { capitalise } from './helpers'
 
 export const setUpCountryStore = (data) => {
   const countryCodes = {}
@@ -25,6 +26,5 @@ export const formatCurrencies = (currencies) => {
 export const formatLanguages = (languages) => {
   return languages ? Object.values(languages).join(', ') : null
 }
-const capitalise = (word) => {
-  word.charAt(0).toUpperCase() + word.slice(1)
-}
+
+export const regionFilterLabels = ['--All--'].concat(state.value.regions)

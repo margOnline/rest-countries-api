@@ -15,6 +15,7 @@ const filterCountriesByRegion = async (region) => {
     : allCountriesEndpoint
   const data = await getCountries(endpoint)
   state.value.countries = data
+  state.value.isDropdownActive = false
 }
 </script>
 

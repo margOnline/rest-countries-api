@@ -1,11 +1,11 @@
 <script setup>
 import AppSpinner from '@/components/AppSpinner.vue'
-import AsyncApp from '@/components/AsyncApp.vue'
+import CountriesGrid from '@/components/CountriesGrid.vue'
 </script>
 
 <template>
   <Suspense>
-    <AsyncApp />
+    <CountriesGrid />
     <template #fallback>
       <AppSpinner />
     </template>

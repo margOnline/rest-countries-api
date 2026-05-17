@@ -2,19 +2,24 @@
 import { ref } from 'vue'
 import { getCountry } from '@/services/request-client'
 import { formatCurrencies, formatLanguages } from '@/services/country-service'
+import { formatNumber } from '@/services/helpers'
 import { state } from '@/store/store'
 import GoBack from './GoBack.vue'
+import AppSpinner from './AppSpinner.vue'
 
 const props = defineProps({
   code: { type: String, required: true },
 })
 const country = ref({})
+
 getCountry(props.code).then((data) => (country.value = data))
 </script>
 
 <template>
   <div>
     <GoBack />
+    <div class="center"><AppSpinner v-if="state.isLoading" /></div>
+
     <div class="country-card">
       <div class="country-flag"><img :src="country?.flags?.svg" :alt="country?.flags?.alt" /></div>
       <div class="country-info">
@@ -22,7 +27,7 @@ getCountry(props.code).then((data) => (country.value = data))
         <div class="country-details">
           <div class="country-detail-left">
             <p><span>Native Name: </span>{{ country?.name?.official }}</p>
-            <p><span>Population: </span>{{ country?.population }}</p>
+            <p><span>Population: </span>{{ formatNumber(country?.population) }}</p>
             <p><span>Region: </span>{{ country?.region }}</p>
             <p><span>Sub Region: </span>{{ country?.subregion }}</p>
             <p><span>Capital: </span>{{ country?.capital?.join(', ') }}</p>
@@ -35,11 +40,11 @@ getCountry(props.code).then((data) => (country.value = data))
         </div>
         <div class="country-borders">
           <h4>Border Countries:</h4>
-          <div v-if="country?.borders">
-            <div v-for="border in country?.borders" :key="border" class="border-country">
+          <ul role="list" v-if="country?.borders">
+            <li v-for="border in country?.borders" :key="border" class="border-country">
               {{ state.countryCodeToName[border] }}
-            </div>
-          </div>
+            </li>
+          </ul>
           <div v-else>None</div>
         </div>
       </div>
@@ -48,6 +53,10 @@ getCountry(props.code).then((data) => (country.value = data))
 </template>
 
 <style scoped>
+.center {
+  display: flex;
+  justify-content: center;
+}
 .country-card {
   margin: 1rem;
   font-size: var(--detail-font-size);
@@ -58,11 +67,17 @@ getCountry(props.code).then((data) => (country.value = data))
 .country-details p span {
   font-weight: bold;
 }
-.border-country {
-  font-size: 0.825rem;
+.country-borders ul {
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.country-borders li {
+  font-size: 0.725rem;
   margin-inline-start: 1rem;
-  border: 1px solid var(--grey-400);
-  padding: 0.325em 0.75em;
+  border: 1px solid var(--grey-250);
+  padding: 0.325rem 1rem;
 }
 img {
   width: 100%;
@@ -76,7 +91,6 @@ img {
     justify-content: flex-start;
   }
   .country-borders {
-    grid-row: 1/3;
     display: flex;
     justify-content: flex-start;
     align-items: center;
