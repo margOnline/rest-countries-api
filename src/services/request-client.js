@@ -21,6 +21,7 @@ export const getCountry = async (code) => {
     const data = await res?.json()
     return data?.[0]
   } catch (error) {
+    console.error('Error getting country: ', error)
     state.value.hasError = true
   } finally {
     state.value.isLoading = false
