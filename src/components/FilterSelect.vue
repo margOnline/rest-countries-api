@@ -1,15 +1,19 @@
 <script setup>
 import { ref } from 'vue'
 import { state } from '@/store/store'
+import { constants } from '@/services/helpers'
 import DownArrowIcon from './DownArrowIcon.vue'
 
 const emit = defineEmits(['filterCountries'])
-const regionFilters = ['--All--'].concat(state.value.regions)
-// const regionFilters = ['--All--', 'Africa', 'Antarctic', 'America', 'Asia', 'Europe', 'Oceania']
-const dropdownLabel = ref('')
+const regionFilters = [constants.allLabel].concat(state.value.regions)
+const dropdownLabel = ref('Filter by region')
 const toggleDropdown = () => {
   state.value.isDropdownActive = !state.value.isDropdownActive
-  dropdownLabel.value = state.value.currentRegion ? state.value.currentRegion : 'Filter by region'
+}
+const handleRegionSelect = (event) => {
+  const region = event.target.textContent
+  dropdownLabel.value = state.value.regions.includes(region) ? region : constants.filterLabel
+  emit('filterCountries', region)
 }
 </script>
 
@@ -28,7 +32,7 @@ const toggleDropdown = () => {
         v-for="region in regionFilters"
         :key="region.toLowerCase()"
         :value="region"
-        @click="emit('filterCountries', region)"
+        @click="handleRegionSelect"
       >
         {{ region }}
       </li>

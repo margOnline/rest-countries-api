@@ -1,9 +1,8 @@
 import { ref } from 'vue'
-export const allLabel = '--All--'
 
 export const state = ref({
   countries: [],
-  regions: [],
+  regions: ['Africa', 'Antarctic', 'America', 'Asia', 'Europe', 'Oceania'],
   countryCodeToName: {},
   isLoading: false,
   isDropdownActive: false,
