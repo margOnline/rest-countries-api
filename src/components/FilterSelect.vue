@@ -52,9 +52,6 @@ ul {
   gap: 1rem;
   border: none;
 }
-.custom-shadow {
-  box-shadow: 0 0px 12px rgba(0, 0, 0, 0.05);
-}
 .region-dropdown-content {
   overflow: hidden;
   position: absolute;
