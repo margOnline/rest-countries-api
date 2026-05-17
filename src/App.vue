@@ -1,11 +1,13 @@
 <script setup>
-// import { state } from './store/countryStore'
-import AppHeader from '@/components/AppHeader.vue'
+import { state } from './store/store'
+import AppSpinner from './components/AppSpinner.vue'
 </script>
 
 <template>
   <div>
-    <AppHeader />
+    <div class="center" v-if="state.isLoading">
+      <AppSpinner />
+    </div>
     <router-view></router-view>
   </div>
 </template>

@@ -2,6 +2,7 @@
 import { state } from '../store/store'
 import { getCountries, allCountriesEndpoint } from '@/services/request-client'
 import { setUpCountryStore } from '@/services/country-service'
+import AppHeader from './AppHeader.vue'
 import CountrySummary from '../components/CountrySummary.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
 import SearchBar from '@/components/SearchBar.vue'
@@ -21,6 +22,7 @@ const filterCountriesByRegion = async (region) => {
 
 <template>
   <div>
+    <AppHeader />
     <div class="actions">
       <SearchBar />
       <FilterSelect @filterCountries="filterCountriesByRegion" />
@@ -39,12 +41,7 @@ const filterCountriesByRegion = async (region) => {
 .dark {
   background-color: var(--blue-950);
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 1rem;
-  border-bottom: 1px solid var(--grey-250);
-}
+
 main {
   padding: 1rem;
   margin-inline: 1rem;

@@ -19,3 +19,16 @@ const toggleMode = () => {
     </div>
   </header>
 </template>
+
+<style scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid var(--grey-250);
+}
+.title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+</style>

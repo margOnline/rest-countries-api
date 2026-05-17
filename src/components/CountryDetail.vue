@@ -5,7 +5,7 @@ import { formatCurrencies, formatLanguages } from '@/services/country-service'
 import { formatNumber } from '@/services/helpers'
 import { state } from '@/store/store'
 import GoBack from './GoBack.vue'
-import AppSpinner from './AppSpinner.vue'
+import AppHeader from './AppHeader.vue'
 
 const props = defineProps({
   code: { type: String, required: true },
@@ -17,9 +17,8 @@ getCountry(props.code).then((data) => (country.value = data))
 
 <template>
   <div>
+    <AppHeader />
     <GoBack />
-    <div class="center"><AppSpinner v-if="state.isLoading" /></div>
-
     <div class="country-card">
       <div class="country-flag"><img :src="country?.flags?.svg" :alt="country?.flags?.alt" /></div>
       <div class="country-info">
@@ -53,10 +52,6 @@ getCountry(props.code).then((data) => (country.value = data))
 </template>
 
 <style scoped>
-.center {
-  display: flex;
-  justify-content: center;
-}
 .country-card {
   margin: 1rem;
   font-size: var(--detail-font-size);

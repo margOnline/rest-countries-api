@@ -55,6 +55,10 @@ button {
   white-space: nowrap;
   border-width: 0;
 }
+.center {
+  display: flex;
+  justify-content: center;
+}
 .custom-shadow {
   box-shadow: 0 0px 12px rgba(0, 0, 0, 0.05);
 }
