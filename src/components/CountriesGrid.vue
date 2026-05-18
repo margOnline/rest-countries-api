@@ -3,7 +3,7 @@ import { state } from '../store/store'
 import { getCountries, allCountriesEndpoint } from '@/services/request-client'
 import { setUpCountryStore } from '@/services/country-service'
 import AppHeader from './AppHeader.vue'
-import CountrySummary from '../components/CountrySummary.vue'
+import CountryCardSummary from './CountryCardSummary.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
 import SearchBar from '@/components/SearchBar.vue'
 
@@ -28,7 +28,7 @@ const filterCountriesByRegion = async (region) => {
       <FilterSelect @filterCountries="filterCountriesByRegion" />
     </div>
     <main>
-      <CountrySummary
+      <CountryCardSummary
         v-for="country in state.countries"
         :key="country?.name?.common.toLowerCase()"
         :country="country"
