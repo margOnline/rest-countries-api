@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { getCountry } from '@/services/request-client'
+import { getCountryByCode } from '@/services/request-client'
 import { formatCurrencies, formatLanguages } from '@/services/country-service'
 import { formatNumber } from '@/services/helpers'
 import { state } from '@/store/store'
@@ -12,7 +12,7 @@ const props = defineProps({
 })
 const country = ref({})
 
-getCountry(props.code).then((data) => (country.value = data))
+getCountryByCode(props.code).then((data) => (country.value = data))
 </script>
 
 <template>

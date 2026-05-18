@@ -23,7 +23,7 @@ export const getCountries = async (endpoint) => {
   }
 }
 
-export const getCountry = async (code) => {
+export const getCountryByCode = async (code) => {
   state.value.isLoading = true
   state.value.hasError = false
   try {
@@ -31,7 +31,22 @@ export const getCountry = async (code) => {
     const data = await res?.json()
     return data?.[0]
   } catch (error) {
-    console.error('Error getting country: ', error)
+    console.error('Error getting country, code: ', code, 'Error: ', error)
+    state.value.hasError = true
+  } finally {
+    state.value.isLoading = false
+  }
+}
+
+export const getCountryByName = async (name) => {
+  state.value.isLoading = true
+  state.value.hasError = false
+  try {
+    const res = await fetch(`${api}name/${name.toLowerCase()}`)
+    const data = await res?.json()
+    return data?.[0]
+  } catch (error) {
+    console.error('Error getting country, name: ', name, 'Error: ', error)
     state.value.hasError = true
   } finally {
     state.value.isLoading = false
