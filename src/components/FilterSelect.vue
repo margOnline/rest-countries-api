@@ -44,14 +44,12 @@ const handleRegionSelect = (event) => {
 ul {
   padding: 1rem;
 }
-.filter-container {
-  display: flex;
-  justify-content: end;
-}
 .filter-container button {
+  width: 100%;
   font-size: 1rem;
   background-color: var(--white);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   border: none;
