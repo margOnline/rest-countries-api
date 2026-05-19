@@ -1,5 +1,5 @@
 <script setup>
-import { formatNumber } from '@/services/helpers';
+import { formatNumber } from '@/services/helpers'
 
 const props = defineProps({
   country: Object,
@@ -18,7 +18,12 @@ const capitalFormatted = () => {
         params: { code: props.country.cca3 },
       }"
     >
-      <img :src="props.country.flags.svg" :alt="props.country.flags.alt" />
+      <img
+        v-lazy="{
+          src: props.country?.flags?.svg,
+        }"
+        :alt="props.country?.flags.alt"
+      />
     </router-link>
     <div class="country-detail">
       <h2>{{ props.country.name.common }}</h2>
