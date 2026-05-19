@@ -44,6 +44,12 @@ const handleRegionSelect = (event) => {
 ul {
   padding: 1rem;
 }
+li {
+  padding: 0.5rem;
+}
+.filter-container {
+  position: relative;
+}
 .filter-container button {
   width: 100%;
   font-size: 1rem;
@@ -58,27 +64,23 @@ ul {
   overflow: hidden;
   position: absolute;
   background-color: var(--white);
-  top: 5.5rem;
-  right: 1rem;
-  width: 30%;
+  top: 3rem;
+  right: 0rem;
+  width: 100%;
   visibility: hidden;
   opacity: 0;
   transform: scaleY(0);
   transform-origin: top;
   border-radius: 0.375rem;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-  transition:
-    opacity 0.3s ease,
-    visibility 0s ease 0.3s;
+  transition: all 0.3s ease;
   z-index: 10;
 }
 .region-dropdown-content.active {
   opacity: 1;
   transform: scaleY(1);
   visibility: visible;
-  transition:
-    opacity 0.3s ease,
-    visibility 0s ease;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 30rem) {
