@@ -1,6 +1,6 @@
 <script setup>
 import { state } from '../store/store'
-import { getCountries, allCountriesEndpoint } from '@/services/request-client'
+import { getCountries, allCountriesEndpoint, getCountryByName } from '@/services/request-client'
 import { setUpCountryStore } from '@/services/country-service'
 import AppHeader from './AppHeader.vue'
 import CountryCardSummary from './CountryCardSummary.vue'
@@ -19,8 +19,20 @@ const filterCountriesByRegion = async (region) => {
   state.value.isDropdownActive = false
 }
 
-const getCountryInfo = (country) => {
-  console.log('countryinfo: ', country)
+const getCountryInfo = async (searchTerm) => {
+  console.log('countryinfo: ', searchTerm)
+
+  try {
+    const result = await getCountryByName(searchTerm)
+    state.value.hasError = result.length === 0
+    console.log('result: ', result)
+    state.value.countries = result
+  } catch (error) {
+    console.error(error)
+    state.value.hasError = true
+  } finally {
+    state.value.isLoading = false
+  }
 }
 </script>
 

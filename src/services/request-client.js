@@ -3,7 +3,8 @@ import { state } from '@/store/store'
 const api = 'https://restcountries.com/v3.1/'
 
 export const allCountriesEndpoint = 'all?fields=name,flags,population,region,capital,cca3'
-const fields = 'name,population,region,subregion,capital,tld,currencies,languages,borders,flags,cca3'
+const fields =
+  'name,population,region,subregion,capital,tld,currencies,languages,borders,flags,cca3'
 
 export const getCountries = async (endpoint) => {
   state.value.isLoading = true
@@ -45,7 +46,7 @@ export const getCountryByName = async (name) => {
   try {
     const res = await fetch(`${api}name/${name.toLowerCase()}?fields=${fields}`)
     const data = await res?.json()
-    return data?.[0]
+    return data
   } catch (error) {
     console.error('Error getting country, name: ', name, 'Error: ', error)
     state.value.hasError = true

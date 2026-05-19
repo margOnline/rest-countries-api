@@ -15,7 +15,7 @@ const capitalFormatted = () => {
     <router-link
       :to="{
         name: 'countries.show',
-        params: { code: props.country?.cca3 },
+        params: { code: props?.country?.cca3 },
       }"
     >
       <img
