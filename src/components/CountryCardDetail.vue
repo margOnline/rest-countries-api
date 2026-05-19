@@ -20,7 +20,14 @@ getCountryByCode(props.code).then((data) => (country.value = data))
     <AppHeader />
     <GoBack />
     <div class="country-card">
-      <div class="country-flag"><img :src="country?.flags?.svg" :alt="country?.flags?.alt" /></div>
+      <div class="country-flag">
+        <img
+          v-lazy="{
+            src: country?.flags?.svg,
+          }"
+          :alt="country?.flags?.alt"
+        />
+      </div>
       <div class="country-info">
         <h2>{{ country?.name?.common }}</h2>
         <div class="country-details">
