@@ -1,4 +1,5 @@
-import { ref, onUnmounted } from 'vue';
+import { ref, onUnmounted } from 'vue'
+import { state } from '@/store/store'
 
 export const constants = {
   allLabel: '--All--',
@@ -11,27 +12,29 @@ export const capitalise = (word) => {
   word.charAt(0).toUpperCase() + word.slice(1)
 }
 
-export function useDebounce(fxn, delay) {
-// Define a function that takes 2 arguments:
-// 1. a function that can accept any number of arguments and returns a value of any type
-// 2. the delay in ms before executing the function
-  const timeoutID = ref(null);
+export const switchTheme = () => {
+  document.documentElement.setAttribute('data-theme', state.value.darkMode ? 'dark' : 'light')
+}
 
+export function useDebounce(fxn, delay) {
+  // The purpose of this function is to apply
+  // a delay before executing the passed function
+
+  const timeoutID = ref(null)
   const debouncedFn = (...args) => {
     if (timeoutID.value !== null) {
-      clearTimeout(timeoutID.value);
+      clearTimeout(timeoutID.value)
     }
-
     timeoutID.value = window.setTimeout(() => {
-      fxn(...args);
-    }, delay);
-  };
+      fxn(...args)
+    }, delay)
+  }
 
   onUnmounted(() => {
     if (timeoutID.value !== null) {
-      clearTimeout(timeoutID.value);
+      clearTimeout(timeoutID.value)
     }
-  });
+  })
 
-  return debouncedFn;
+  return debouncedFn
 }

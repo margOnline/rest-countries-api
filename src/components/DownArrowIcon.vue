@@ -7,13 +7,5 @@
 </template>
 
 <style scoped>
-svg {
-  height: 1rem;
-  background-color: var(--white);
-  border: none;
-  margin-inline-end: 1rem;
-}
-svg.fill {
-  color: var(--blue-950);
-}
+
 </style>

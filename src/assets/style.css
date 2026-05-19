@@ -1,20 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-:root {
-  /* Colors */
-  --blue-900: hsl(209, 23%, 22%);
-  --blue-950: hsl(207, 26%, 17%);
-  --grey-950: hsl(200, 15%, 8%);
-  --grey-400: hsl(0, 0%, 50%);
-  --grey-350: hsl(0, 0%, 65%);
-  --grey-250: hsl(0, 0%, 81%);
-  --grey-50: hsl(0, 0%, 99%);
-  --white: hsl(0, 100%, 100%);
 
-  /* typography */
-  --sans-serif: 'Nunito Sans', sans-serif;
-  --summary-font-size: 0.875rem;
-  --detail-font-size: 1rem;
+@layer base {
+  :root {
+    /* Colors */
+    --blue-950: hsl(207, 26%, 17%);
+    --blue-900: hsl(209, 23%, 22%);
+    --blue-750: hsl(206, 18%, 40%);
+    --grey-950: hsl(200, 15%, 8%);
+    --grey-400: hsl(0, 0%, 50%);
+    --grey-250: hsl(0, 0%, 85%);
+    --grey-50: hsl(0, 0%, 97%);
+    --white: hsl(0, 100%, 100%);
+    /* typography */
+    --sans-serif: 'Nunito Sans', sans-serif;
+    --summary-font-size: 0.875rem;
+    --detail-font-size: 1rem;
+  }
+  :root[data-theme='light'] {
+    --primary-color: var(--blue-900);
+    --primary_accent-color: var(--grey-400);
+    --secondary-color: var(--white);
+    --bg-color: var(--grey-50);
+    --bg_accent-color: var(--grey-250);
+    --font_weight: 700;
+  }
+  :root[data-theme='dark'] {
+    --primary-color: var(--white);
+    --primary_accent-color: var(--grey-250);
+    --secondary-color: var(--blue-900);
+    --bg-color: var(--blue-950);
+    --bg_accent-color: var(--blue-750);
+    --font_weight: 500;
+  }
 }
+
 * {
   color-scheme: light dark;
   box-sizing: border-box;
@@ -32,7 +51,8 @@ a {
 }
 body {
   font-family: var(--sans-serif);
-  background-color: var(--grey-50);
+  background-color: var(--bg-color);
+  color: var(--primary-color);
 }
 h2 {
   margin-block-end: 1rem;
@@ -44,10 +64,19 @@ button {
   background-color: var(--white);
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid var(--grey-250);
+  border: 1px solid var(--bg_accent-color);
   border-radius: 0.325rem;
   cursor: pointer;
-  color: var(--grey-400);
+  color: var(--primary_accent-color);
+}
+svg {
+  height: 1rem;
+  background-color: var(--white);
+  border: none;
+  margin-inline-end: 1rem;
+}
+svg.fill {
+  color: var(--primary-color);
 }
 .sr-only {
   position: absolute;
@@ -67,6 +96,7 @@ button {
 .custom-shadow {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
+
 @media (min-width: 64rem) {
   body {
     width: 1024px;
