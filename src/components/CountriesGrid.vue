@@ -18,13 +18,17 @@ const filterCountriesByRegion = async (region) => {
   state.value.countries = data
   state.value.isDropdownActive = false
 }
+
+const getCountryInfo = (country) => {
+  console.log('countryinfo: ', country)
+}
 </script>
 
 <template>
   <div>
     <AppHeader />
     <div class="actions">
-      <SearchBar />
+      <SearchBar @searchForCountry="getCountryInfo" />
       <FilterSelect @filterCountries="filterCountriesByRegion" />
     </div>
     <main>
