@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 export const state = ref({
   countries: [],
-  regions: ['Africa', 'Antarctic', 'America', 'Asia', 'Europe', 'Oceania'],
+  regions: ['Africa', 'Antarctic', 'Americas', 'Asia', 'Europe', 'Oceania'],
   countryCodeToName: {},
   isLoading: false,
   isDropdownActive: false,

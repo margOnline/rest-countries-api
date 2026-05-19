@@ -28,6 +28,7 @@
 }
 body {
   font-family: var(--sans-serif);
+  background-color: var(--grey-50);
 }
 h2 {
   margin-block-end: 1rem;
