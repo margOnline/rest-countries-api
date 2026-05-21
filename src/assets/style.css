@@ -78,6 +78,13 @@ svg {
 svg.fill {
   color: var(--primary-color);
 }
+.center {
+  display: flex;
+  justify-content: center;
+}
+.custom-shadow {
+  box-shadow: 0 0px 8px hsl(0, 0%, 85%);
+}
 .sr-only {
   position: absolute;
   width: 1px;

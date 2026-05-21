@@ -49,6 +49,8 @@ li {
 }
 .filter-container {
   position: relative;
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
 }
 .filter-container button {
   width: 100%;
@@ -59,6 +61,7 @@ li {
   align-items: center;
   gap: 1rem;
   border: none;
+  margin-block-start: 0.5rem;
 }
 .region-dropdown-content {
   overflow: hidden;

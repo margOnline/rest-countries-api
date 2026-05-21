@@ -30,7 +30,7 @@ watch(search, handleSearch)
     <input
       v-model="search"
       type="text"
-      placeholder="Search for a country..."
+      placeholder="Search for a country ..."
       @keyup="handleSearch"
     />
   </form>
@@ -39,7 +39,7 @@ watch(search, handleSearch)
 <style scoped>
 form {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 500px;
   background-color: var(--white);
