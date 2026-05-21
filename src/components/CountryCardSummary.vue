@@ -15,7 +15,7 @@ const capitalFormatted = () => {
     <router-link
       :to="{
         name: 'countries.show',
-        params: { code: props.country.cca3 },
+        params: { code: props?.country?.cca3 },
       }"
     >
       <img
@@ -26,9 +26,9 @@ const capitalFormatted = () => {
       />
     </router-link>
     <div class="country-detail">
-      <h2>{{ props.country.name.common }}</h2>
-      <p><span>Population: </span>{{ formatNumber(props.country.population) }}</p>
-      <p><span>Region: </span>{{ props.country.region }}</p>
+      <h2>{{ props.country?.name?.common }}</h2>
+      <p><span>Population: </span>{{ formatNumber(props.country?.population) }}</p>
+      <p><span>Region: </span>{{ props.country?.region }}</p>
       <p><span>Capital: </span>{{ capitalFormatted() }}</p>
     </div>
   </div>

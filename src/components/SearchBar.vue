@@ -1,7 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, defineEmits } from 'vue'
+import { state } from '@/store/store'
+import { useDebounce } from '@/services/helpers'
 import SearchIcon from './SearchIcon.vue'
+
+const emit = defineEmits(['searchForCountry'])
 const search = ref('')
+
+const handleSearch = useDebounce(async () => {
+  const searchTerm = search.value.trim()
+  state.value.isLoading = true
+  if (!searchTerm) {
+    state.value.hasError = false
+    state.value.isLoading = false
+    return
+  }
+
+  emit('searchForCountry', searchTerm)
+}, 300)
+
+watch(search, handleSearch)
 </script>
 
 <template>
