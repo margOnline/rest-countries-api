@@ -24,7 +24,7 @@ watch(search, handleSearch)
 
 <template>
   <form @submit.prevent class="custom-shadow" autocomplete="off">
-    <button class="h-full px-4">
+    <button>
       <SearchIcon />
     </button>
     <input
