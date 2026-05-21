@@ -1,31 +1,27 @@
 <script setup>
 import { state } from '../store/store'
-import { getCountries, allCountriesEndpoint, getCountryByName } from '@/services/request-client'
+import { getCountries, getCountryByName, getCountriesByRegion } from '@/services/request-client'
 import { setUpCountryStore } from '@/services/country-service'
 import AppHeader from './AppHeader.vue'
 import CountryCardSummary from './CountryCardSummary.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
 import SearchBar from '@/components/SearchBar.vue'
 
-getCountries(allCountriesEndpoint).then((data) => setUpCountryStore(data))
+getCountries().then((data) => setUpCountryStore(data))
 
 const filterCountriesByRegion = async (region) => {
   state.value.currentRegion = region
-  const endpoint = state.value.regions.find((r) => r === region)
-    ? `region/${region}`
-    : allCountriesEndpoint
-  const data = await getCountries(endpoint)
+  const data = state.value.regions.find((r) => r === region)
+    ? await getCountriesByRegion(region)
+    : await getCountries()
   state.value.countries = data
   state.value.isDropdownActive = false
 }
 
 const getCountryInfo = async (searchTerm) => {
-  console.log('countryinfo: ', searchTerm)
-
   try {
     const result = await getCountryByName(searchTerm)
     state.value.hasError = result.length === 0
-    console.log('result: ', result)
     state.value.countries = result
   } catch (error) {
     console.error(error)

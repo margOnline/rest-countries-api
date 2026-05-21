@@ -3,10 +3,10 @@ import { state } from '@/store/store'
 const api = 'https://restcountries.com/v3.1/'
 
 export const allCountriesEndpoint = 'all?fields=name,flags,population,region,capital,cca3'
-const fields =
+const countryFields =
   'name,population,region,subregion,capital,tld,currencies,languages,borders,flags,cca3'
 
-export const getCountries = async (endpoint) => {
+export const getCountries = async (endpoint = allCountriesEndpoint) => {
   state.value.isLoading = true
   state.value.hasError = false
   const url = api + endpoint
@@ -44,11 +44,26 @@ export const getCountryByName = async (name) => {
   state.value.isLoading = true
   state.value.hasError = false
   try {
-    const res = await fetch(`${api}name/${name.toLowerCase()}?fields=${fields}`)
+    const res = await fetch(`${api}name/${name.toLowerCase()}?fields=${countryFields}`)
     const data = await res?.json()
     return data
   } catch (error) {
     console.error('Error getting country, name: ', name, 'Error: ', error)
+    state.value.hasError = true
+  } finally {
+    state.value.isLoading = false
+  }
+}
+
+export const getCountriesByRegion = async (region) => {
+  state.value.isLoading = true
+  state.value.hasError = false
+  try {
+    const res = await fetch(`${api}region/${region}`)
+    const data = await res?.json()
+    return data
+  } catch (error) {
+    console.error('Error getting country, region: ', region, 'Error: ', error)
     state.value.hasError = true
   } finally {
     state.value.isLoading = false
