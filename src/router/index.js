@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/NotFound',
     name: 'NotFound',
-    component: () => import('@/views/NotFound.vue'),
+    component: () => import('@/views/NotFoundPage.vue'),
   },
 ]
 

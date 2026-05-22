@@ -1,11 +1,12 @@
 <script setup>
-import { defineProps } from 'vue'
 import router from '@/router'
+import { defineProps } from 'vue'
 
 const props = defineProps({
   message: { type: String, default: null },
 })
 </script>
+
 <template>
   <section>
     <div>
