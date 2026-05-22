@@ -1,5 +1,11 @@
 <script setup>
+import { state } from '@/store/store'
 import router from '@/router'
+
+const goHome = () => {
+  state.value.hasError = false
+  router.push('/')
+}
 </script>
 
 <template>
@@ -8,7 +14,7 @@ import router from '@/router'
       <h1>404</h1>
       <p>Page Not Found</p>
       <p>Sorry, an error has occurred, requested page not found</p>
-      <button @click="router.push('/')" class="custom-shadow">
+      <button @click="goHome" class="custom-shadow">
         <span class="transition-all duration-200 ease-linear hover:-translate-y-0.5">
           Go back home
         </span>
