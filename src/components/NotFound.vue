@@ -1,10 +1,5 @@
 <script setup>
 import router from '@/router'
-import { defineProps } from 'vue'
-
-const props = defineProps({
-  message: { type: String, default: null },
-})
 </script>
 
 <template>
@@ -13,7 +8,6 @@ const props = defineProps({
       <h1>404</h1>
       <p>Page Not Found</p>
       <p>Sorry, an error has occurred, requested page not found</p>
-      <p v-if="props.message">{{ props.message }}</p>
       <button @click="router.push('/')" class="custom-shadow">
         <span class="transition-all duration-200 ease-linear hover:-translate-y-0.5">
           Go back home
