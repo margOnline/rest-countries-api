@@ -6,19 +6,30 @@ import AppHeader from './AppHeader.vue'
 import CountryCardSummary from './CountryCardSummary.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
 import SearchBar from '@/components/SearchBar.vue'
+import NotFound from './NotFound.vue'
 
 getCountries().then((data) => setUpCountryStore(data))
 
 const filterCountriesByRegion = async (region) => {
-  state.value.currentRegion = region
-  const data = state.value.regions.find((r) => r === region)
-    ? await getCountriesByRegion(region)
-    : await getCountries()
-  state.value.countries = data
-  state.value.isDropdownActive = false
+  state.value.isLoading = true
+  try {
+    const data = state.value.regions.find((r) => r === region)
+      ? await getCountriesByRegion(region)
+      : await getCountries()
+    state.value.countries = data
+    state.value.isDropdownActive = false
+  } catch (error) {
+    console.error(error)
+    state.value.hasError = true
+  } finally {
+    state.value.isLoading = false
+    state.value.currentRegion = null
+  }
 }
 
-const getCountryInfo = async (searchTerm) => {
+const fetchCountry = async (searchTerm) => {
+  state.value.isLoading = true
+  state.value.hasError = false
   try {
     const result = await getCountryByName(searchTerm)
     state.value.hasError = result.length === 0
@@ -33,10 +44,14 @@ const getCountryInfo = async (searchTerm) => {
 </script>
 
 <template>
-  <div>
+  <div v-if="state.hasError">
+    <NotFound />
+  </div>
+
+  <div v-else>
     <AppHeader />
     <div class="actions">
-      <SearchBar @searchForCountry="getCountryInfo" />
+      <SearchBar @searchForCountry="fetchCountry" />
       <FilterSelect @filterCountries="filterCountriesByRegion" />
     </div>
     <main>

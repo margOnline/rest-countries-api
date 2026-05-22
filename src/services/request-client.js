@@ -1,71 +1,49 @@
+import axios from 'axios'
 import { countrySort } from '../services/country-service'
 import { state } from '@/store/store'
+
 const api = 'https://restcountries.com/v3.1/'
+const axiosInstance = axios.create({
+  baseURL: api,
+  headers: { 'Content-Type': 'application/json}' },
+})
 
 export const allCountriesEndpoint = 'all?fields=name,flags,population,region,capital,cca3'
 const countryFields =
   'name,population,region,subregion,capital,tld,currencies,languages,borders,flags,cca3'
 
 export const getCountries = async (endpoint = allCountriesEndpoint) => {
-  state.value.isLoading = true
-  state.value.hasError = false
-  const url = api + endpoint
-
   try {
-    const res = await fetch(url)
-    const data = await res.json()
-    const sortedData = await countrySort(data)
-
-    return sortedData
+    const res = await axiosInstance.get(endpoint)
+    return countrySort(res.data)
   } catch (error) {
-    console.error('Error getting countries: ', error)
-    state.value.hasError = true
-  } finally {
-    state.value.isLoading = false
+    throw error
   }
 }
 
 export const getCountryByCode = async (code) => {
-  state.value.isLoading = true
-  state.value.hasError = false
   try {
-    const res = await fetch(`${api}alpha/${code.toLowerCase()}`)
-    const data = await res?.json()
-    return data?.[0]
+    const res = await axiosInstance(`alpha/${code.toLowerCase()}`)
+    return res.data[0]
   } catch (error) {
-    console.error('Error getting country, code: ', code, 'Error: ', error)
-    state.value.hasError = true
-  } finally {
-    state.value.isLoading = false
+    throw error
   }
 }
 
 export const getCountryByName = async (name) => {
-  state.value.isLoading = true
-  state.value.hasError = false
   try {
-    const res = await fetch(`${api}name/${name.toLowerCase()}?fields=${countryFields}`)
-    const data = await res?.json()
-    return data
+    const res = await axiosInstance(`name/${name.toLowerCase()}?fields=${countryFields}`)
+    return res.data
   } catch (error) {
-    console.error('Error getting country, name: ', name, 'Error: ', error)
-    state.value.hasError = true
-  } finally {
-    state.value.isLoading = false
+    throw error
   }
 }
 
 export const getCountriesByRegion = async (region) => {
-  state.value.isLoading = true
-  state.value.hasError = false
   try {
-    const res = await fetch(`${api}region/${region}`)
-    const data = await res?.json()
-    return data
+    const res = await axiosInstance(`region/${region}`)
+    return res.data
   } catch (error) {
-    console.error('Error getting country, region: ', region, 'Error: ', error)
-    state.value.hasError = true
-  } finally {
-    state.value.isLoading = false
+    throw error
   }
 }

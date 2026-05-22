@@ -1,19 +1,20 @@
 <script setup>
-import { defineProps } from 'vue'
+import { state } from '@/store/store'
 import router from '@/router'
 
-const props = defineProps({
-  message: { type: String, default: null },
-})
+const goHome = () => {
+  state.value.hasError = false
+  router.push('/')
+}
 </script>
+
 <template>
   <section>
     <div>
       <h1>404</h1>
       <p>Page Not Found</p>
       <p>Sorry, an error has occurred, requested page not found</p>
-      <p v-if="props.message">{{ props.message }}</p>
-      <button @click="router.push('/')" class="custom-shadow">
+      <button @click="goHome" class="custom-shadow">
         <span class="transition-all duration-200 ease-linear hover:-translate-y-0.5">
           Go back home
         </span>
