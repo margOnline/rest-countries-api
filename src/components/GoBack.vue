@@ -1,6 +1,6 @@
 <template>
-  <div class="go-back">
-    <button @click="goBack"><font-awesome-icon icon="fa-solid fa-arrow-left" />Back</button>
+  <div class="go-back custom-shadow">
+    <button @click="goBack"><font-awesome-icon icon="fa-solid fa-arrow-left" class="spacer"/>Back</button>
   </div>
 </template>
 <script>
@@ -19,8 +19,10 @@ export default {
 }
 button {
   padding: 0.5rem 1rem;
-  color: var(--grey-950);
-  border: 1px solid var(--grey-400);
+  color: var(--grey-400);
   background-color: var(--white);
+}
+.spacer {
+  margin-inline-end: 1rem;
 }
 </style>

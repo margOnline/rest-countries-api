@@ -18,7 +18,7 @@ getCountryByCode(props.code).then((data) => (country.value = data))
 <template>
   <div>
     <AppHeader />
-    <GoBack />
+    <GoBack class="push-right"/>
     <div class="country-card">
       <div class="country-flag">
         <img
@@ -84,6 +84,9 @@ getCountryByCode(props.code).then((data) => (country.value = data))
 img {
   width: 100%;
   border-radius: 0.5rem;
+}
+.push-right {
+  margin: 1rem;
 }
 
 @media (min-width: 30rem) {
