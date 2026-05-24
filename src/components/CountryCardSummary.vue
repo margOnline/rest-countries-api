@@ -57,6 +57,8 @@ img {
 }
 .country-detail {
   padding: 1rem;
+  margin-block-start: -0.5rem;
   font-size: var(--detail-font-size);
+  background-color: var(--secondary-color);
 }
 </style>

@@ -30,7 +30,7 @@ watch(search, handleSearch)
     <input
       v-model="search"
       type="text"
-      placeholder="Search for a country..."
+      placeholder="Search for a country ..."
       @keyup="handleSearch"
     />
   </form>
@@ -39,12 +39,10 @@ watch(search, handleSearch)
 <style scoped>
 form {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 500px;
-  background-color: var(--white);
-  color: var(--grey-400);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   border: none;
   overflow: hidden;
 }
@@ -53,15 +51,18 @@ input {
   height: 100%;
   border: none;
   font-size: 1rem;
+  background-color: var(--secondary-color);
 }
 input::placeholder {
-  color: var(--grey-350);
+  color: var(--primary-color);
 }
 input:focus {
   outline: none;
 }
 button {
   border: none;
+  border-radius: 0rem;
+  background-color: var(--secondary-color);
 }
 svg {
   padding-block-start: 0.25rem;

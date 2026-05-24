@@ -49,22 +49,25 @@ li {
 }
 .filter-container {
   position: relative;
+  border-radius: 0.5rem;
+  background-color: var(--secondary-color);
 }
 .filter-container button {
+  background-color: var(--secondary-color);
   width: 100%;
   font-size: 1rem;
-  background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   border: none;
+  margin-block-start: 0.5rem;
 }
 .region-dropdown-content {
   overflow: hidden;
   position: absolute;
-  background-color: var(--white);
-  top: 3rem;
+  background-color: var(--secondary-color);
+  top: 4rem;
   right: 0rem;
   width: 100%;
   visibility: hidden;

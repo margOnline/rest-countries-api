@@ -21,8 +21,8 @@ export default {
 }
 button {
   padding: 0.5rem 1rem;
-  color: var(--grey-400);
-  background-color: var(--white);
+  color: var(--primary-color);
+  background-color: var(--bg-color);
 }
 .spacer {
   margin-inline-end: 1rem;
