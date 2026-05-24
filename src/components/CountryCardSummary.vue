@@ -24,13 +24,14 @@ const capitalFormatted = () => {
         }"
         :alt="props.country?.flags.alt"
       />
+
+      <div class="country-detail">
+        <h2>{{ props.country?.name?.common }}</h2>
+        <p><span>Population: </span>{{ formatNumber(props.country?.population) }}</p>
+        <p><span>Region: </span>{{ props.country?.region }}</p>
+        <p><span>Capital: </span>{{ capitalFormatted() }}</p>
+      </div>
     </router-link>
-    <div class="country-detail">
-      <h2>{{ props.country?.name?.common }}</h2>
-      <p><span>Population: </span>{{ formatNumber(props.country?.population) }}</p>
-      <p><span>Region: </span>{{ props.country?.region }}</p>
-      <p><span>Capital: </span>{{ capitalFormatted() }}</p>
-    </div>
   </div>
 </template>
 

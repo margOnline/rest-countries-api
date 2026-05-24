@@ -21,7 +21,10 @@
   padding: 0;
   margin: 0;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 [role='list'] {
   list-style: none;
   margin: 0;
