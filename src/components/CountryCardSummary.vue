@@ -11,7 +11,7 @@ const capitalFormatted = () => {
 </script>
 
 <template>
-  <div class="country-card">
+  <article class="country-card custom-shadow">
     <router-link
       :to="{
         name: 'countries.show',
@@ -32,15 +32,24 @@ const capitalFormatted = () => {
         <p><span>Capital: </span>{{ capitalFormatted() }}</p>
       </div>
     </router-link>
-  </div>
+  </article>
 </template>
 
 <style scoped>
 .country-card {
   font-size: var(--summary-font-size);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   overflow: hidden;
+
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+}
+.country-card:hover {
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  transform: translateY(-4px);
+}
+.country-card:hover:before {
+  transform: scale(2.15);
 }
 img {
   width: 100%;

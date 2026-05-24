@@ -1,6 +1,8 @@
 <template>
-  <div class="go-back custom-shadow">
-    <button @click="goBack"><font-awesome-icon icon="fa-solid fa-arrow-left" class="spacer"/>Back</button>
+  <div class="go-back">
+    <button class="custom-shadow" @click="goBack">
+      <font-awesome-icon icon="fa-solid fa-arrow-left" class="spacer" />Back
+    </button>
   </div>
 </template>
 <script>
