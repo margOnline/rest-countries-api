@@ -15,7 +15,7 @@
 
 <style scoped>
 svg {
-  fill: var(--grey-250);
+  fill: var(--primary-color);
   height: 2rem;
   margin-inline-end: 0;
 }

@@ -7,7 +7,7 @@
 </template>
 
 <style scoped>
-/* .fill-white {
+.fill-white {
   fill: var(--white);
-} */
+}
 </style>

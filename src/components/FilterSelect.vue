@@ -49,13 +49,13 @@ li {
 }
 .filter-container {
   position: relative;
-  background-color: var(--primary-color);
   border-radius: 0.5rem;
+  background-color: var(--secondary-color);
 }
 .filter-container button {
+  background-color: var(--secondary-color);
   width: 100%;
   font-size: 1rem;
-  background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,8 +66,8 @@ li {
 .region-dropdown-content {
   overflow: hidden;
   position: absolute;
-  background-color: var(--white);
-  top: 3rem;
+  background-color: var(--secondary-color);
+  top: 4rem;
   right: 0rem;
   width: 100%;
   visibility: hidden;

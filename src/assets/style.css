@@ -71,13 +71,11 @@ button {
 }
 svg {
   height: 1rem;
-  background-color: var(--white);
   border: none;
   margin-inline-end: 1rem;
+  fill: var(--primary-color);
 }
-svg.fill {
-  color: var(--primary-color);
-}
+
 .center {
   display: flex;
   justify-content: center;

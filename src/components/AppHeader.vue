@@ -18,7 +18,7 @@ const toggleMode = () => {
     <div class="mode-switch">
       <button @click="toggleMode">
         <SunIcon v-if="!state.darkMode" />
-        <MoonIcon v-if="state.darkMode" class="dark-bg" />
+        <MoonIcon v-if="state.darkMode" />
         {{ lightDarkMode() }} Mode
       </button>
     </div>
@@ -31,6 +31,7 @@ header {
   justify-content: space-between;
   padding: 2rem 1rem;
   border-bottom: 1px solid var(--bg_accent-color);
+  background-color: var(--secondary-color);
 }
 button {
   display: flex;
@@ -43,7 +44,7 @@ button {
 .mode-switch:hover {
   border: 2px solid var(--bg_accent-color);
   background-color: var(--primary-color);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 .title {
   font-weight: bold;
