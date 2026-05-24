@@ -4,6 +4,7 @@ import { getCountryByCode } from '@/services/request-client'
 import { formatCurrencies, formatLanguages } from '@/services/country-service'
 import { formatNumber } from '@/services/helpers'
 import { state } from '@/store/store'
+import router from '@/router'
 import GoBack from './GoBack.vue'
 import AppHeader from './AppHeader.vue'
 
@@ -12,13 +13,29 @@ const props = defineProps({
 })
 const country = ref({})
 
-getCountryByCode(props.code).then((data) => (country.value = data))
+const searchForCountryInfo = async (code) => {
+  state.value.isLoading = true
+  state.value.hasError = false
+
+  try {
+    const data = await getCountryByCode(code)
+    country.value = data
+    router.replace(`/countries/${code}`)
+  } catch (error) {
+    console.error('Error getting country: ', error)
+    state.value.hasError = true
+  } finally {
+    state.value.isLoading = false
+  }
+}
+
+searchForCountryInfo(props.code)
 </script>
 
 <template>
   <div>
     <AppHeader />
-    <GoBack class="push-right"/>
+    <GoBack class="push-right" />
     <div class="country-card">
       <div class="country-flag">
         <img
@@ -44,13 +61,18 @@ getCountryByCode(props.code).then((data) => (country.value = data))
             <p><span>Languages: </span>{{ formatLanguages(country?.languages) }}</p>
           </div>
         </div>
-        <div class="country-borders">
+        <div class="country-borders-container">
           <h4>Border Countries:</h4>
-          <ul role="list" v-if="country?.borders">
-            <li v-for="border in country?.borders" :key="border" class="border-country">
+          <div v-if="country?.borders" class="country-borders">
+            <button
+              v-for="(border, index) in country?.borders"
+              :key="index"
+              class="border-country"
+              @click="searchForCountryInfo(border)"
+            >
               {{ state.countryCodeToName[border] }}
-            </li>
-          </ul>
+            </button>
+          </div>
           <div v-else>None</div>
         </div>
       </div>
@@ -69,15 +91,24 @@ getCountryByCode(props.code).then((data) => (country.value = data))
 .country-details p span {
   font-weight: bold;
 }
-.country-borders ul {
+.country-borders-container {
   display: flex;
   justify-content: flex-start;
   row-gap: 0.5rem;
   flex-wrap: wrap;
+  h4 {
+    margin-inline-end: 1rem;
+  }
 }
-.country-borders li {
+.country-borders {
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.border-country {
   font-size: 0.725rem;
-  margin-inline-start: 1rem;
   border: 1px solid var(--grey-250);
   padding: 0.325rem 1rem;
 }
