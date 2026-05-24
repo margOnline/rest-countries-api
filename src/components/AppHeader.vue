@@ -38,7 +38,7 @@ button {
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: var(--bg-color);
+  background-color: var(--secondary-color);
   color: var(--primary-color);
 }
 .mode-switch:hover {

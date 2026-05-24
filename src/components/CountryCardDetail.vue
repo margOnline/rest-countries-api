@@ -108,8 +108,10 @@ searchForCountryInfo(props.code)
   flex-wrap: wrap;
 }
 .border-country {
+  background-color: var(--secondary-color);
+
   font-size: 0.725rem;
-  border: 1px solid var(--grey-250);
+  border: 1px solid var(--bg_accent-color);
   padding: 0.325rem 1rem;
 }
 img {
