@@ -1,5 +1,5 @@
 <script setup>
-import { state } from '@/store/store'
+import { state } from '@/store'
 import { switchTheme } from '@/services/helpers'
 import SunIcon from './SunIcon.vue'
 import MoonIcon from './MoonIcon.vue'

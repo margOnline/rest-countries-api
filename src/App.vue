@@ -1,5 +1,5 @@
 <script setup>
-import { state } from './store/store'
+import { state } from './store'
 import AppSpinner from './components/AppSpinner.vue'
 </script>
 

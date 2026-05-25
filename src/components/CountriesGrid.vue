@@ -1,5 +1,5 @@
 <script setup>
-import { state } from '../store/store'
+import { state } from '../store'
 import { getCountries, getCountryByName, getCountriesByRegion } from '@/services/request-client'
 import { setUpCountryStore } from '@/services/country-service'
 import AppHeader from './AppHeader.vue'
@@ -8,7 +8,9 @@ import FilterSelect from '@/components/FilterSelect.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import NotFound from './NotFound.vue'
 
-getCountries().then((data) => setUpCountryStore(data))
+getCountries()
+  .then((data) => setUpCountryStore(data))
+  .catch((error) => console.error(error))
 
 const filterCountriesByRegion = async (region) => {
   state.value.isLoading = true

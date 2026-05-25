@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { state } from '@/store/store'
+import { state } from '@/store'
 import { constants } from '@/services/helpers'
 import DownArrowIcon from './DownArrowIcon.vue'
 

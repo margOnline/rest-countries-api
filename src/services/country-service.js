@@ -1,4 +1,4 @@
-import { state } from '@/store/store'
+import { state } from '@/store'
 import { capitalise } from './helpers'
 
 export const setUpCountryStore = (data) => {
@@ -13,7 +13,7 @@ export const setUpCountryStore = (data) => {
   state.value.regions = regions.sort()
   state.value.countries = data
 }
-export const countrySort = async (data) => {
+export const countrySort = (data) => {
   return data.sort((a, b) => a.name.common.localeCompare(b.name.common, 'en'))
 }
 export const formatCurrencies = (currencies) => {

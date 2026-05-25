@@ -1,5 +1,5 @@
 import { ref, onUnmounted } from 'vue'
-import { state } from '@/store/store'
+import { state } from '@/store'
 
 export const constants = {
   allLabel: '--All--',
@@ -9,7 +9,7 @@ export const formatNumber = (number) => {
   return Intl.NumberFormat().format(number)
 }
 export const capitalise = (word) => {
-  word.charAt(0).toUpperCase() + word.slice(1)
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
 export const switchTheme = () => {

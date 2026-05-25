@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { getCountryByCode } from '@/services/request-client'
 import { formatCurrencies, formatLanguages } from '@/services/country-service'
 import { formatNumber } from '@/services/helpers'
-import { state } from '@/store/store'
+import { state } from '@/store'
 import router from '@/router'
 import GoBack from './GoBack.vue'
 import AppHeader from './AppHeader.vue'
@@ -65,8 +65,8 @@ searchForCountryInfo(props.code)
           <h4>Border Countries:</h4>
           <div v-if="country?.borders" class="country-borders">
             <button
-              v-for="(border, index) in country?.borders"
-              :key="index"
+              v-for="border in country?.borders"
+              :key="border"
               class="border-country"
               @click="searchForCountryInfo(border)"
             >
@@ -139,7 +139,7 @@ img {
 }
 @media (min-width: 48rem) {
   .country-card {
-    display: gap;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
