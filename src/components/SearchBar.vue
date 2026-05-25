@@ -24,9 +24,10 @@ watch(search, handleSearch)
 
 <template>
   <form @submit.prevent class="custom-shadow" autocomplete="off">
-    <button>
+    <div>
+      <span class="sr-only">Search for a country</span>
       <SearchIcon />
-    </button>
+    </div>
     <input v-model="search" type="text" placeholder="Search for a country ..." />
   </form>
 </template>

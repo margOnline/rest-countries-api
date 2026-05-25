@@ -19,7 +19,11 @@ const handleRegionSelect = (event) => {
 
 <template>
   <div class="filter-container custom-shadow">
-    <button @click="toggleDropdown()">
+    <button
+      @click="toggleDropdown()"
+      :aria-expanded="state.isDropdownActive"
+      aria-controls="regions-panel"
+    >
       <span>{{ dropdownLabel }}</span>
       <DownArrowIcon />
     </button>
@@ -33,6 +37,7 @@ const handleRegionSelect = (event) => {
         :key="region.toLowerCase()"
         :value="region"
         @click="handleRegionSelect"
+        tabindex="0"
       >
         {{ region }}
       </li>
