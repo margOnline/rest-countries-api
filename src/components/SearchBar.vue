@@ -42,6 +42,7 @@ form {
   justify-content: flex-start;
   align-items: center;
   max-width: 500px;
+  background-color: var(--secondary-color);
   border-radius: 0.5rem;
   border: none;
   overflow: hidden;
@@ -63,6 +64,7 @@ button {
   border: none;
   border-radius: 0rem;
   background-color: var(--secondary-color);
+  padding-block: 0;
 }
 svg {
   padding-block-start: 0.25rem;
