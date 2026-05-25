@@ -1,7 +1,11 @@
 <script setup>
 import { state } from '../store'
-import { getCountries, getCountryByName, getCountriesByRegion } from '@/services/request-client'
-import { setUpCountryStore } from '@/services/country-service'
+import {
+  getCountries,
+  getCountryByName,
+  getCountriesByRegion,
+  setUpCountryStore,
+} from '@/services/'
 import AppHeader from './AppHeader.vue'
 import CountryCardSummary from './CountryCardSummary.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
@@ -59,7 +63,7 @@ const fetchCountry = async (searchTerm) => {
     <main>
       <CountryCardSummary
         v-for="country in state.countries"
-        :key="country?.name?.common.toLowerCase()"
+        :key="country?.cca3"
         :country="country"
       />
     </main>

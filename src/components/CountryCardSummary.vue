@@ -1,5 +1,5 @@
 <script setup>
-import { formatNumber } from '@/services/helpers'
+import { formatNumber } from '@/services/'
 
 const props = defineProps({
   country: Object,

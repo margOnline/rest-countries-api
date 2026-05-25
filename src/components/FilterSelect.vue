@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { state } from '@/store'
-import { constants } from '@/services/helpers'
+import { constants } from '@/services/'
 import DownArrowIcon from './DownArrowIcon.vue'
 
 const emit = defineEmits(['filterCountries'])
@@ -22,14 +22,14 @@ const handleRegionSelect = (event) => {
     <button
       @click="toggleDropdown()"
       :aria-expanded="state.isDropdownActive"
-      aria-controls="regions-panel"
+      aria-controls="regions-dropdown"
     >
       <span>{{ dropdownLabel }}</span>
       <DownArrowIcon />
     </button>
     <ul
       role="list"
-      id="regionFilter"
+      id="regions-dropdown"
       :class="['region-dropdown-content', { active: state.isDropdownActive }]"
     >
       <li
