@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { getCountryByCode } from '@/services/request-client'
-import { formatCurrencies, formatLanguages } from '@/services/country-service'
-import { formatNumber } from '@/services/helpers'
+import { getCountryByCode, formatCurrencies, formatLanguages, formatNumber } from '@/services/'
 import { state } from '@/store'
 import router from '@/router'
 import GoBack from './GoBack.vue'

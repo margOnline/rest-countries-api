@@ -26,5 +26,3 @@ export const formatCurrencies = (currencies) => {
 export const formatLanguages = (languages) => {
   return languages ? Object.values(languages).join(', ') : null
 }
-
-export const regionFilterLabels = ['--All--'].concat(state.value.regions)

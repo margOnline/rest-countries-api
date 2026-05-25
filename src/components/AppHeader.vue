@@ -1,6 +1,6 @@
 <script setup>
 import { state } from '@/store'
-import { switchTheme } from '@/services/helpers'
+import { switchTheme } from '@/services/'
 import SunIcon from './SunIcon.vue'
 import MoonIcon from './MoonIcon.vue'
 
