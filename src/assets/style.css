@@ -75,13 +75,12 @@ svg {
   margin-inline-end: 1rem;
   fill: var(--primary-color);
 }
-
 .center {
   display: flex;
   justify-content: center;
 }
 .custom-shadow {
-  box-shadow: 0 0px 8px hsl(0, 0%, 85%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 .sr-only {
   position: absolute;
@@ -93,13 +92,6 @@ svg {
   clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
-}
-.center {
-  display: flex;
-  justify-content: center;
-}
-.custom-shadow {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 @media (min-width: 64rem) {

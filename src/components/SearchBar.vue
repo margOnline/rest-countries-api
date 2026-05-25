@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, defineEmits } from 'vue'
-import { state } from '@/store/store'
+import { state } from '@/store'
 import { useDebounce } from '@/services/helpers'
 import SearchIcon from './SearchIcon.vue'
 
@@ -24,15 +24,11 @@ watch(search, handleSearch)
 
 <template>
   <form @submit.prevent class="custom-shadow" autocomplete="off">
-    <button>
+    <div>
+      <span class="sr-only">Search for a country</span>
       <SearchIcon />
-    </button>
-    <input
-      v-model="search"
-      type="text"
-      placeholder="Search for a country ..."
-      @keyup="handleSearch"
-    />
+    </div>
+    <input v-model="search" type="text" placeholder="Search for a country ..." />
   </form>
 </template>
 

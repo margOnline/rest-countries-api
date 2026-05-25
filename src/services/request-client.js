@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { countrySort } from '../services/country-service'
-import { state } from '@/store/store'
 
 const api = 'https://restcountries.com/v3.1/'
 const axiosInstance = axios.create({
   baseURL: api,
-  headers: { 'Content-Type': 'application/json}' },
+  headers: { "Content-Type": "application/json" }
 })
 
 export const allCountriesEndpoint = 'all?fields=name,flags,population,region,capital,cca3'
